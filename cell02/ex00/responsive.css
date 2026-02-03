@@ -1,0 +1,38 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+td {
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2vw;
+    word-wrap: break-word;
+}
+
+.left {
+    background-color: #c9d18a;
+}
+
+.right {
+    background-color: #f7c6b2;
+}
+
+
+@media (max-width: 600px) {
+    td {
+        font-size: 4vw;
+    }
+}

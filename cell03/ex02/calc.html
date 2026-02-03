@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f2f2f2;
+      }
+
+      .box {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      input, select {
+        height: 38px;
+        padding: 0 10px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="calc" class="box">
+      <input id="left" type="text" placeholder="Left" />
+      <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+      </select>
+      <input id="right" type="text" placeholder="Right" />
+      <input type="submit" value="Try me!" />
+    </form>
+
+    <script>
+
+      setInterval(function () {
+        alert("Please, use me...");
+      }, 30000);
+
+      function isValidPositiveInt(str) {
+
+        if (str === null) return false;
+        str = str.trim();
+        if (str === "") return false;
+        return /^[0-9]+$/.test(str);
+      }
+
+      document.getElementById("calc").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var leftStr = document.getElementById("left").value;
+        var rightStr = document.getElementById("right").value;
+        var op = document.getElementById("op").value;
+
+        if (!isValidPositiveInt(leftStr) || !isValidPositiveInt(rightStr)) {
+          alert("Error :(");
+          return;
+        }
+
+        var left = parseInt(leftStr, 10);
+        var right = parseInt(rightStr, 10);
+
+        if ((op === "/" || op === "%") && right === 0) {
+          alert("It's over 9000!");
+          console.log("It's over 9000!");
+          return;
+        }
+
+        var result;
+        if (op === "+") result = left + right;
+        else if (op === "-") result = left - right;
+        else if (op === "*") result = left * right;
+        else if (op === "/") result = left / right;
+        else if (op === "%") result = left % right;
+
+        alert(result);
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>

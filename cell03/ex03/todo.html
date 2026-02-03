@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>To do or not to do</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      #new-btn {
+        padding: 10px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      #ft_list {
+        margin-top: 20px;
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+        min-height: 50px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      }
+
+      .todo {
+        padding: 12px;
+        margin: 8px 0;
+        background: #e9eefc;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .todo:hover {
+        background: #dfe7ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="new-btn">New</button>
+    <div id="ft_list"></div>
+
+    <script src="todo.js"></script>
+  </body>
+</html>

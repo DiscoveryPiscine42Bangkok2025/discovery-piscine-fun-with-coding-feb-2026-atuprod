@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Change background</title>
+    <link rel="stylesheet" href="background.css">
+  </head>
+
+  <body>
+    <button id="btn">Change background</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        $("#btn").on("click", function () {
+          var r = Math.floor(Math.random() * 256);
+          var g = Math.floor(Math.random() * 256);
+          var b = Math.floor(Math.random() * 256);
+
+          $("body").css(
+            "background-color",
+            "rgb(" + r + "," + g + "," + b + ")"
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
