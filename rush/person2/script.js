@@ -18,21 +18,17 @@ function setActive(target) {
     if (btn) btn.classList.add("active");
 }
 
-/* click -> scroll + pulse + active */
 document.querySelectorAll(".side-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const target = btn.dataset.target;
         const el = getTargetEl(target);
         if (!el) return;
 
-        // pulse effect
         btn.classList.add("pulse");
         setTimeout(() => btn.classList.remove("pulse"), 180);
 
-        // set active
         setActive(target);
 
-        // smooth scroll
         el.scrollIntoView({ behavior: "smooth", block: "start" });
         const card = el.classList.contains("card")
             ? el
@@ -40,14 +36,13 @@ document.querySelectorAll(".side-btn").forEach(btn => {
 
         if (card) {
             card.classList.remove("pulse");
-            void card.offsetWidth;      // ให้เด้งได้ทุกครั้งแม้กดซ้ำเร็วๆ
+            void card.offsetWidth;      
             card.classList.add("pulse");
             setTimeout(() => card.classList.remove("pulse"), 320);
         }
     });
 });
 
-/* highlight ตามตำแหน่ง scroll */
 function observeSections() {
     const info = document.getElementById("info");
     const skills = document.getElementById("skills");
@@ -60,7 +55,7 @@ function observeSections() {
     ].filter(x => x.el);
 
     const io = new IntersectionObserver((entries) => {
-        // เลือก entry ที่เด่นสุด
+       
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const found = items.find(x => x.el === entry.target);
@@ -74,9 +69,6 @@ function observeSections() {
 
 observeSections();
 
-/* resize เผื่อสลับ contact desktop/mobile */
 window.addEventListener("resize", () => {
-    // รีโหลด observer แบบง่าย
-    // (ในงานจริงอาจ disconnect แต่แบบนี้พอสำหรับโปรเจกต์)
-    observeSections();
+        observeSections();
 });
